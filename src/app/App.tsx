@@ -1,11 +1,9 @@
 import React, {Suspense, useContext, useState} from 'react';
 import './App.css';
 import {Link, Route, Routes} from 'react-router-dom';
-import "./styles/index.scss";
-import {classNames} from "../helpers/classNames/classNames";
-import {AboutPage} from "../pages/AboutPage/";
-import {MainPage} from "../pages/MainPage/";
-import {Theme, ThemeContext} from "./providers/ThemeProvider/lib/ThemeContext";
+import "./styles/index.scss";import {Theme, ThemeContext} from "./providers/ThemeProvider/lib/ThemeContext";
+import {AppRouter} from "./providers/router";
+import {classNames} from "../shared/classNames/classNames";
 
 function App() {
     const {theme, setTheme} = useContext(ThemeContext);
@@ -19,12 +17,7 @@ function App() {
             <button onClick={toggleTheme}>Сменить тему</button>
             <Link to={"/"}>Главная</Link>
             <Link to={"/about"}>О сайте</Link>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    <Route path={"/"} element={<MainPage/>}/>
-                    <Route path={"/about"} element={<AboutPage/>}/>
-                </Routes>
-            </Suspense>
+            <AppRouter/>
         </div>
     );
 }
