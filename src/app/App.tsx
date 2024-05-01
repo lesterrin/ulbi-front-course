@@ -5,14 +5,14 @@ import {AppRouter} from "./providers/router";
 import {classNames} from "../shared/classNames/classNames";
 import {useTheme} from "./providers/ThemeProvider/lib/useTheme";
 import {Navbar} from "../widgets/Navbar";
+import {ThemeSwitcherButton} from "../widgets/ThemeSwitcherButton";
 
 function App() {
-    const {theme, toggleTheme} = useTheme();
+    const {theme} = useTheme();
 
     return (
         <div className={classNames('app', {hovered: true, selected: false}, [theme, 'cls2'])}>
             <Navbar/>
-            <button onClick={toggleTheme}>Сменить тему</button>
             <AppRouter/>
         </div>
     );
